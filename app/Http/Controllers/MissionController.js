@@ -6,7 +6,7 @@ const attributes = ['objective', 'location', 'launch-time', 'duration', 'host-co
 class MissionController {
 
   * index(request, response) {
-    const missions = yield Mission.with().fetch();
+    const missions = yield Mission.with('crew').fetch();
 
     response.jsonApi('Mission', missions);
   }
@@ -22,7 +22,7 @@ class MissionController {
 
   * show(request, response) {
     const id = request.param('id');
-    const mission = yield Mission.with().where({ id }).firstOrFail();
+    const mission = yield Mission.with('crew').where({ id }).firstOrFail();
 
     response.jsonApi('Mission', mission);
   }
@@ -35,7 +35,7 @@ class MissionController {
     const foreignKeys = {
     };
 
-    const mission = yield Mission.with().where({ id }).firstOrFail();
+    const mission = yield Mission.with('crew').where({ id }).firstOrFail();
     mission.fill(Object.assign({}, input, foreignKeys));
     yield mission.save();
 

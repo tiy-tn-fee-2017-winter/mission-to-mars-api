@@ -4,6 +4,9 @@ const Lucid = use('Lucid')
 
 class Mission extends Lucid {
 
+  crew() {
+    return this.hasMany('App/Model/Crew');
+  }
 
 }
 

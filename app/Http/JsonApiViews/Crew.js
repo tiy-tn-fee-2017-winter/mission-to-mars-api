@@ -8,7 +8,7 @@ class Crew extends JsonApiView {
   mission() {
     return this.belongsTo('App/Http/JsonApiViews/Mission', {
       included: true,
-      excludeRelation: 'crews'
+      excludeRelation: 'crew'
     });
   }
 

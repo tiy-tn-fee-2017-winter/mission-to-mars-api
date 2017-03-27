@@ -5,6 +5,12 @@ class Mission extends JsonApiView {
     return ['objective', 'location', 'launch_time', 'duration', 'host_country'];
   }
 
+  crew() {
+    return this.hasMany('App/Http/JsonApiViews/Crew', {
+      included: true,
+      excludeRelation: 'mission'
+    });
+  }
 }
 
 module.exports = Mission;
