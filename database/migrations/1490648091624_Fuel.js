@@ -10,7 +10,7 @@ class FuelSchema extends Schema {
     this.create('fuels', (table) => {
       table.increments();
       table.string('type');
-      table.float('burn-rate');
+      table.float('burn_rate');
       table.float('capacity');
       table.float('volume');
       table.timestamps();
