@@ -11,7 +11,7 @@ class FuelSchema extends Schema {
       table.increments();
       table.string('type');
       table.float('burn-rate');
-      table.float('weight');
+      table.float('capacity');
       table.float('volume');
       table.timestamps();
     });

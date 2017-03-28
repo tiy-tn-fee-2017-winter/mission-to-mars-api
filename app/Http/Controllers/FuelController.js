@@ -1,7 +1,7 @@
 'use strict';
 
 const Fuel = use('App/Model/Fuel');
-const attributes = ['type', 'burn-rate', 'weight', 'volume'];
+const attributes = ['type', 'burn-rate', 'capacity', 'volume'];
 
 class FuelController {
 
