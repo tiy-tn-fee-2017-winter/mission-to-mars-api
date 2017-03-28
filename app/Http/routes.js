@@ -11,7 +11,6 @@
 |
 | @example
 | Route.get('/user', 'UserController.index')
-| Route.post('/user', 'UserController.store')
 | Route.resource('user', 'UserController')
 */
 
@@ -20,3 +19,4 @@ const Route = use('Route');
 Route.resource('/missions', 'MissionController').except(['create', 'edit']);
 Route.resource('/crews', 'CrewController').except(['create', 'edit']);
 Route.resource('/fuel', 'FuelController').except(['create', 'edit']);
+// Route.post('/fuel', 'FuelController.store');
