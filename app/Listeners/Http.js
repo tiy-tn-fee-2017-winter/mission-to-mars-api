@@ -12,9 +12,11 @@ const Http = exports = module.exports = {};
  * @param  {Object} response
  */
 Http.handleError = function* (error, request, response) {
-/**
- * DEVELOPMENT REPORTER
- */
+  const status = error.status || 500;
+
+  /**
+   * DEVELOPMENT REPORTER
+   */
   if (Env.get('NODE_ENV') === 'development') {
     const youch = new Youch(error, request.request);
     const type = request.accepts('json', 'html');
