@@ -18,7 +18,7 @@ Http.handleError = function* (error, request, response) {
   /**
    * DEVELOPMENT REPORTER
    */
-  if (Env.get('NODE_ENV') === 'development' && !(err instanceof JsonApiError)) {
+  if (Env.get('NODE_ENV') === 'development' && !(error instanceof JsonApiError)) {
     const youch = new Youch(error, request.request);
     const type = request.accepts('json', 'html');
     const formatMethod = type === 'json' ? 'toJSON' : 'toHTML';
