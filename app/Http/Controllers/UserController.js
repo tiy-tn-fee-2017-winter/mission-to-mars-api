@@ -1,9 +1,36 @@
 'use strict';
 
 const User = use('App/Model/User');
+const Hash = use('Hash');
 const attributes = ['email', 'password'];
+const E = require('node-exceptions');
 
 class UserController {
+
+  * login(request, response) {
+    const { username: email, password } = request.all();
+
+    try {
+      const user = yield User.findBy('email', email);
+      const passwordValid = yield Hash.verify(password, user.password);
+
+      if (!passwordValid) {
+        throw { };
+      }
+
+      const token = yield request.auth.generate(user);
+      response.json({ token });
+    } catch (e) {
+      response.status(401).json({
+        errors: [
+          {
+            status: 401,
+            title: 'User failed to log in.',
+          },
+        ],
+      });
+    }
+  }
 
   * index(request, response) {
     const users = yield User.with().fetch();
