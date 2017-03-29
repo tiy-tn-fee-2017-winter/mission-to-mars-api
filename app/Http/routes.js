@@ -19,3 +19,6 @@ const Route = use('Route');
 
 Route.resource('/missions', 'MissionController').except(['create', 'edit']);
 Route.resource('/crews', 'CrewController').except(['create', 'edit']);
+
+Route.post('/users', 'UserController.store');
+Route.post('/token-auth', 'UserController.login');
