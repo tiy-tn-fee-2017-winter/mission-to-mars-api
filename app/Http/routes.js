@@ -24,3 +24,4 @@ Route.resource('/rations', 'RationController').except(['create', 'edit']);
 
 Route.post('/users', 'UserController.store');
 Route.post('/token-auth', 'UserController.login');
+Route.resource('/inventory-changes', 'InventoryChangeController').except(['create', 'edit']);
