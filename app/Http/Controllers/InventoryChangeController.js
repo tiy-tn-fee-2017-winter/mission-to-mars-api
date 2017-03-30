@@ -18,6 +18,11 @@ class InventoryChangeController {
     };
     const inventoryChange = yield InventoryChange.create(Object.assign({}, input, foreignKeys));
 
+    yield inventoryChange.related('ration.inventoryChanges').load();
+
+    const ration = inventoryChange.relations.ration;
+    ration.remaining = ration.calculateRemaining();
+
     response.jsonApi('InventoryChange', inventoryChange);
   }
 

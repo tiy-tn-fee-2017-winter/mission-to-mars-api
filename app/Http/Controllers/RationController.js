@@ -6,7 +6,11 @@ const attributes = ['name', 'quantity', 'type', 'weight', 'expiration-date'];
 class RationController {
 
   * index(request, response) {
-    const rations = yield Ration.with().fetch();
+    const rations = yield Ration.with('inventoryChanges').fetch();
+
+    rations.forEach((ration) => {
+      ration.remaining = ration.calculateRemaining();
+    });
 
     response.jsonApi('Ration', rations);
   }
